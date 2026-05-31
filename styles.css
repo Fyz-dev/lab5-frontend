@@ -40,11 +40,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px;
+  padding: clamp(12px, 4vw, 32px);
 }
 
 .app {
-  width: 980px;
+  width: min(980px, 100%);
   max-width: 100%;
 }
 
@@ -52,28 +52,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 18px;
+  gap: clamp(12px, 3vw, 24px);
+  margin-bottom: clamp(14px, 3vw, 18px);
 }
 
 .app-title {
   margin: 0;
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(24px, 7vw, 40px);
   letter-spacing: -0.04em;
 }
 
 .app-sub {
-  margin: 6px 0 0;
+  margin: clamp(4px, 1vw, 6px) 0 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: clamp(11px, 2.8vw, 13px);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .card {
   background: linear-gradient(180deg, rgba(12, 21, 38, 0.86), var(--card));
-  padding: 20px;
-  border-radius: 24px;
+  padding: clamp(14px, 3vw, 20px);
+  border-radius: clamp(18px, 4vw, 24px);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.35),
@@ -94,21 +94,22 @@ body {
 }
 
 .controls {
-  margin-bottom: 16px;
+  margin-bottom: clamp(12px, 3vw, 16px);
 }
 
 .task-form {
   display: flex;
-  gap: 8px;
+  gap: clamp(6px, 2vw, 8px);
 }
 
 .btn {
-  padding: 10px 14px;
-  border-radius: 14px;
+  padding: clamp(9px, 2.5vw, 10px) clamp(12px, 3vw, 14px);
+  border-radius: clamp(12px, 3vw, 14px);
   border: 0;
   background: transparent;
   color: var(--muted);
   cursor: pointer;
+  font-size: clamp(13px, 3vw, 15px);
 }
 
 .btn.primary {
@@ -125,8 +126,8 @@ body {
 
 .row {
   display: flex;
-  gap: 12px;
-  margin-top: 12px;
+  gap: clamp(8px, 3vw, 12px);
+  margin-top: clamp(10px, 3vw, 12px);
   align-items: center;
   flex-wrap: wrap;
 }
@@ -142,7 +143,7 @@ body {
 }
 
 .filter-btn {
-  padding: 8px 12px;
+  padding: clamp(7px, 2.2vw, 8px) clamp(10px, 3vw, 12px);
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.03);
@@ -169,19 +170,19 @@ body {
 
 .loader {
   display: none;
-  padding: 10px;
+  padding: clamp(8px, 2vw, 10px);
   text-align: center;
   color: var(--muted);
 }
 
 .task-list {
   list-style: none;
-  padding: 4px 0;
-  padding-right: 8px;
-  margin: 16px 0;
+  padding: clamp(4px, 1vw, 6px) 0;
+  padding-right: clamp(6px, 2vw, 8px);
+  margin: clamp(12px, 3vw, 16px) 0;
   display: grid;
-  gap: 12px;
-  max-height: 520px;
+  gap: clamp(8px, 2.6vw, 12px);
+  max-height: min(520px, 62vh);
   overflow: auto;
   scrollbar-gutter: stable;
 }
@@ -190,9 +191,9 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
-  padding: 14px 16px;
-  border-radius: 18px;
+  gap: clamp(8px, 2.5vw, 10px);
+  padding: clamp(12px, 3vw, 14px) clamp(12px, 3.5vw, 16px);
+  border-radius: clamp(14px, 4vw, 18px);
   background: var(--glass);
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
@@ -205,7 +206,7 @@ body {
 .task-title {
   flex: 1;
   min-width: 0;
-  font-size: 15px;
+  font-size: clamp(14px, 3.8vw, 15px);
   line-height: 1.4;
 }
 
@@ -215,19 +216,20 @@ body {
 }
 
 .task-checkbox {
-  width: 18px;
-  height: 18px;
+  width: clamp(16px, 4vw, 18px);
+  height: clamp(16px, 4vw, 18px);
   margin-top: 2px;
   accent-color: var(--accent);
 }
 
 .task-delete {
-  padding: 8px 10px;
+  padding: clamp(7px, 2.4vw, 8px) clamp(9px, 2.8vw, 10px);
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.03);
   color: var(--muted);
   cursor: pointer;
+  font-size: clamp(12px, 3vw, 14px);
   transition:
     background 140ms ease,
     color 140ms ease,
@@ -248,16 +250,17 @@ body {
 
 .counter-top {
   align-self: center;
-  padding: 8px 12px;
+  padding: clamp(7px, 2vw, 8px) clamp(10px, 2.8vw, 12px);
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.03);
   white-space: nowrap;
+  font-size: clamp(12px, 3vw, 14px);
 }
 
 @media (max-width: 720px) {
   body {
-    padding: 16px;
+    padding: clamp(12px, 4vw, 16px);
     align-items: flex-start;
   }
 
@@ -277,16 +280,13 @@ body {
 .app-footer {
   text-align: center;
   color: var(--muted);
-  margin-top: 12px;
-  font-size: 13px;
+  margin-top: clamp(10px, 3vw, 12px);
+  font-size: clamp(11px, 2.8vw, 13px);
 }
 
 @media (max-width: 640px) {
   .app {
-    padding: 6px;
-  }
-  .row {
-    flex-direction: column;
+    padding: 0;
   }
   .filters {
     width: 100%;
@@ -309,9 +309,9 @@ body {
 .task-input,
 .search-input,
 .task-edit-input {
-  padding: 12px 14px;
+  padding: clamp(10px, 2.8vw, 12px) clamp(12px, 3.2vw, 14px);
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: clamp(12px, 3.5vw, 14px);
   background: rgba(255, 255, 255, 0.03);
   color: inherit;
   outline: none;
@@ -341,4 +341,37 @@ body {
   border-color: rgba(103, 232, 249, 0.42);
   box-shadow: 0 0 0 4px rgba(85, 166, 255, 0.12);
   background: rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 420px) {
+  .app-header {
+    align-items: flex-start;
+  }
+
+  .counter-top {
+    width: 100%;
+    text-align: center;
+  }
+
+  .task-form,
+  .row,
+  .filters {
+    width: 100%;
+  }
+
+  .btn.primary {
+    width: 100%;
+  }
+
+  .search-wrap {
+    width: 100%;
+  }
+
+  .filters {
+    justify-content: stretch;
+  }
+
+  .filter-btn {
+    flex: 1 1 0;
+  }
 }
