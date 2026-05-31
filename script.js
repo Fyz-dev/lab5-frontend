@@ -1,14 +1,14 @@
 const API_BASE = "https://jsonplaceholder.typicode.com/todos";
 
 const elements = {
-  form: document.getElementById("task-form"),
-  input: document.getElementById("task-input"),
-  addBtn: document.getElementById("add-btn"),
-  list: document.getElementById("task-list"),
-  loader: document.getElementById("loader"),
-  counter: document.getElementById("counter"),
-  message: document.getElementById("message"),
-  search: document.getElementById("search-input"),
+  form: document.querySelector("#task-form"),
+  input: document.querySelector("#task-input"),
+  addBtn: document.querySelector("#add-btn"),
+  list: document.querySelector("#task-list"),
+  loader: document.querySelector("#loader"),
+  counter: document.querySelector("#counter"),
+  message: document.querySelector("#message"),
+  search: document.querySelector("#search-input"),
   filters: document.querySelectorAll(".filter-btn"),
 };
 
@@ -38,7 +38,7 @@ function createTaskElement(task) {
   li.className = "task-item";
   li.dataset.id = task.id;
 
-  if (task.completed) li.classList.add("completed");
+  li.classList.toggle("completed", Boolean(task.completed));
 
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
