@@ -70,7 +70,11 @@ body {
   padding: 12px 14px;
   min-width: min(320px, 100%);
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(85, 166, 255, 0.12), rgba(103, 232, 249, 0.08));
+  background: linear-gradient(
+    135deg,
+    rgba(85, 166, 255, 0.12),
+    rgba(103, 232, 249, 0.08)
+  );
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
     0 12px 30px rgba(2, 6, 23, 0.24),
@@ -339,7 +343,11 @@ body {
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid rgba(85, 166, 255, 0.18);
-  background: linear-gradient(135deg, rgba(85, 166, 255, 0.14), rgba(103, 232, 249, 0.08));
+  background: linear-gradient(
+    135deg,
+    rgba(85, 166, 255, 0.14),
+    rgba(103, 232, 249, 0.08)
+  );
   color: #dff1ff;
   box-shadow: 0 10px 24px rgba(2, 6, 23, 0.2);
   white-space: nowrap;
