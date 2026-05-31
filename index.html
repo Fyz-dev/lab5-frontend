@@ -19,11 +19,17 @@
           <h1 class="app-title">Task Manager</h1>
           <p class="app-sub">DOM · Events · Fetch API · Async</p>
         </div>
-        <div id="counter" class="counter counter-top">0 завдань</div>
+        <div class="header-meta">
+          <div id="user-info" class="user-info">Користувач: ...</div>
+        </div>
       </header>
 
       <section class="card">
         <div class="controls">
+          <div class="status-row">
+            <div id="counter" class="counter counter-badge">0 завдань</div>
+          </div>
+
           <form id="task-form" class="task-form" autocomplete="off">
             <input
               id="task-input"

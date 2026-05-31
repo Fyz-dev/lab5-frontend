@@ -7,6 +7,7 @@ const elements = {
   list: document.querySelector("#task-list"),
   loader: document.querySelector("#loader"),
   counter: document.querySelector("#counter"),
+  userInfo: document.querySelector("#user-info"),
   message: document.querySelector("#message"),
   search: document.querySelector("#search-input"),
   filters: document.querySelectorAll(".filter-btn"),
@@ -79,18 +80,66 @@ function updateCounter() {
   elements.counter.textContent = `${active} активних`;
 }
 
+function getUserInitials(name) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0].toUpperCase())
+    .join("");
+}
+
+function renderUserInfo(user) {
+  const initials = getUserInitials(user.name);
+
+  elements.userInfo.innerHTML = "";
+
+  const avatar = document.createElement("div");
+  avatar.className = "user-avatar";
+  avatar.textContent = initials;
+
+  const meta = document.createElement("div");
+  meta.className = "user-meta";
+
+  const label = document.createElement("span");
+  label.className = "user-label";
+  label.textContent = "Користувач";
+
+  const name = document.createElement("strong");
+  name.className = "user-name";
+  name.textContent = user.name;
+
+  const email = document.createElement("span");
+  email.className = "user-email";
+  email.textContent = user.email;
+
+  meta.append(label, name, email);
+  elements.userInfo.append(avatar, meta);
+}
+
 async function loadInitialData() {
   showLoader();
 
   try {
-    const res = await fetch(`${API_BASE}?_limit=20`);
+    const [todosResponse, userResponse] = await Promise.all([
+      fetch(`${API_BASE}?_limit=20`),
+      fetch("https://jsonplaceholder.typicode.com/users/1"),
+    ]);
 
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    tasks = await res.json();
+    if (!todosResponse.ok || !userResponse.ok) {
+      throw new Error("Помилка завантаження даних");
+    }
 
+    const [todos, user] = await Promise.all([
+      todosResponse.json(),
+      userResponse.json(),
+    ]);
+
+    tasks = todos;
+    renderUserInfo(user);
     renderTasks();
   } catch (err) {
-    showMessage("Не вдалося завантажити завдання. Спробуйте пізніше.");
+    showMessage("Не вдалося завантажити дані. Спробуйте пізніше.");
     console.error(err);
   } finally {
     hideLoader();
