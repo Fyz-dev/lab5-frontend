@@ -77,7 +77,7 @@ function renderTasks(list = tasks) {
 
 function updateCounter() {
   const active = tasks.filter((t) => !t.completed).length;
-  elements.counter.textContent = `${active} активних`;
+  elements.counter.textContent = `${active} ${active === 1 ? "активне" : "активних"}`;
 }
 
 function getUserInitials(name) {
