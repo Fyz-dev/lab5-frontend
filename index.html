@@ -31,6 +31,13 @@
             <div id="counter" class="counter counter-badge">0</div>
           </div>
 
+          <div
+            id="message"
+            class="message"
+            role="alert"
+            aria-live="polite"
+          ></div>
+
           <form id="task-form" class="task-form" autocomplete="off">
             <input
               id="task-input"
@@ -62,7 +69,10 @@
           </div>
         </div>
 
-        <div class="loader" id="loader">Завантаження...</div>
+        <div class="loader" id="loader" aria-live="polite" aria-busy="true">
+          <span class="loader-spinner" aria-hidden="true"></span>
+          <span class="visually-hidden">Завантаження...</span>
+        </div>
 
         <ul id="task-list" class="task-list" aria-live="polite"></ul>
       </section>

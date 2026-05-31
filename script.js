@@ -16,13 +16,19 @@ const elements = {
 let tasks = [];
 let filter = "all";
 let searchQuery = "";
+let activeRequests = 0;
 
 function showLoader() {
-  elements.loader.style.display = "block";
+  activeRequests += 1;
+  elements.loader.style.display = "flex";
 }
 
 function hideLoader() {
-  elements.loader.style.display = "none";
+  activeRequests = Math.max(0, activeRequests - 1);
+
+  if (activeRequests === 0) {
+    elements.loader.style.display = "none";
+  }
 }
 
 function showMessage(text, timeout = 4000) {
@@ -193,6 +199,8 @@ async function updateTask(
 
   renderTasks();
 
+  showLoader();
+
   try {
     const res = await fetch(`${API_BASE}/${id}`, {
       method: "PATCH",
@@ -208,6 +216,8 @@ async function updateTask(
 
     showMessage(errorMsg);
     console.error(err);
+  } finally {
+    hideLoader();
   }
 }
 
@@ -230,6 +240,8 @@ async function deleteTask(id) {
   const removed = tasks.splice(idx, 1)[0];
 
   renderTasks();
+  showLoader();
+
   try {
     const res = await fetch(`${API_BASE}/${id}`, { method: "DELETE" });
 
@@ -241,6 +253,8 @@ async function deleteTask(id) {
 
     showMessage("Не вдалося видалити завдання.");
     console.error(err);
+  } finally {
+    hideLoader();
   }
 }
 
