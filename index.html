@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Task Manager — Todo App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <h1 class="app-title">Task Manager</h1>
+        <p class="app-sub">DOM · Events · Fetch API · Async</p>
+      </header>
+
+      <section class="card">
+        <div class="controls">
+          <form id="task-form" class="task-form" autocomplete="off">
+            <input
+              id="task-input"
+              class="task-input"
+              placeholder="Додайте нове завдання..."
+              aria-label="New task"
+            />
+            <button id="add-btn" class="btn primary" type="submit" disabled>
+              Додати
+            </button>
+          </form>
+
+          <div class="row">
+            <div class="search-wrap">
+              <input
+                id="search-input"
+                class="search-input"
+                placeholder="Пошук задач..."
+                aria-label="Search tasks"
+              />
+            </div>
+            <div class="filters">
+              <button class="filter-btn active" data-filter="all">Всі</button>
+              <button class="filter-btn" data-filter="active">Активні</button>
+              <button class="filter-btn" data-filter="completed">
+                Виконані
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="loader" id="loader">Завантаження...</div>
+
+        <ul id="task-list" class="task-list" aria-live="polite"></ul>
+
+        <footer class="card-footer">
+          <div id="counter" class="counter">0 завдань</div>
+          <div id="message" class="message" aria-live="assertive"></div>
+        </footer>
+      </section>
+
+      <footer class="app-footer">Використано JSONPlaceholder API</footer>
+    </main>
+  </body>
+</html>
