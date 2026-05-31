@@ -15,8 +15,11 @@
   <body>
     <main class="app">
       <header class="app-header">
-        <h1 class="app-title">Task Manager</h1>
-        <p class="app-sub">DOM · Events · Fetch API · Async</p>
+        <div>
+          <h1 class="app-title">Task Manager</h1>
+          <p class="app-sub">DOM · Events · Fetch API · Async</p>
+        </div>
+        <div id="counter" class="counter counter-top">0 завдань</div>
       </header>
 
       <section class="card">
@@ -55,11 +58,6 @@
         <div class="loader" id="loader">Завантаження...</div>
 
         <ul id="task-list" class="task-list" aria-live="polite"></ul>
-
-        <footer class="card-footer">
-          <div id="counter" class="counter">0 завдань</div>
-          <div id="message" class="message" aria-live="assertive"></div>
-        </footer>
       </section>
 
       <footer class="app-footer">Використано JSONPlaceholder API</footer>
